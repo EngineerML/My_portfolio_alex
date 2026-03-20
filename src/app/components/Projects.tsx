@@ -9,24 +9,28 @@ export function Projects() {
       description: 'Photoroom — AI photo editing tool for quick, professional images.',
       image: photoroomImage,
       tags: ['Python', 'DeepLearning', 'React', 'AWS', 'Docker'],
+      link: 'https://www.photoroom.com',
     },
     {
       title: 'ML Model API',
       description: 'RESTful API serving machine learning models with real-time predictions and scalable architecture.',
       image: 'https://images.unsplash.com/photo-1661246627162-feb0269e0c07?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBkZXNpZ24lMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzczMjUyNjc5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
       tags: ['FastAPI', 'TensorFlow', 'Docker'],
+      link: 'https://scenario.com',
     },
     {
       title: 'AI Content Assistant',
       description: 'Full-stack application for generating and managing content using advanced AI language models.',
       image: 'https://images.unsplash.com/photo-1764588037085-a78240016f8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwZGVzaWduJTIwd29ya3NwYWNlfGVufDF8fHx8MTc3MzIwNjM0Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
       tags: ['Next.js', 'OpenAI', 'PostgreSQL'],
+      link: 'https://recraft.ai',
     },
     {
       title: 'Computer Vision App',
       description: 'Image recognition and classification system with real-time processing and analytics dashboard.',
       image: 'https://images.unsplash.com/photo-1754548930515-ac7eb978280d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMHRlY2hub2xvZ3klMjBwcm9qZWN0fGVufDF8fHx8MTc3MzE5MzQ2NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
       tags: ['PyTorch', 'React', 'AWS'],
+      link: 'https://leonardo.ai',
     },
   ];
 
@@ -68,7 +72,7 @@ export function Projects() {
                 
                 <div className="flex gap-4">
                   <a
-                    href="https://example.com"
+                    href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-blue-600 hover:text-blue-700 transition-colors"
