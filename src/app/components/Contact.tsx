@@ -33,7 +33,7 @@ export function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-500">Location</p>
-                  <p className="text-gray-900">San Francisco, CA</p>
+                  <p className="text-gray-900">Jakarta, ID</p>
                 </div>
               </div>
             </div>
@@ -42,29 +42,14 @@ export function Contact() {
               <p className="text-sm text-gray-500 mb-4">Follow me</p>
               <div className="flex gap-3">
                 <a
-                  href="https://github.com"
+                  href="https://github.com/alexpetrovme"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors"
                 >
                   <Github size={20} className="text-gray-700" />
                 </a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors"
-                >
-                  <Linkedin size={20} className="text-gray-700" />
-                </a>
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors"
-                >
-                  <Twitter size={20} className="text-gray-700" />
-                </a>
+                
               </div>
             </div>
           </div>
