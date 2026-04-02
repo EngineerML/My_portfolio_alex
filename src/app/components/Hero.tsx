@@ -32,7 +32,7 @@ export function Hero() {
             <Github size={24} className="text-gray-700" />
           </a>
           <a
-            href="https://www.linkedin.com/in/chongzhi-wei-2b8a783bb/"
+            href="https://www.linkedin.com/in/chongzhi-wei/"
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"

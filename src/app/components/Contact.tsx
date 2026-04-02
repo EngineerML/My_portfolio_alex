@@ -50,7 +50,7 @@ export function Contact() {
                   <Github size={20} className="text-gray-700" />
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/chongzhi-wei-2b8a783bb/"
+                  href="https://www.linkedin.com/in/chongzhi-wei/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors"
