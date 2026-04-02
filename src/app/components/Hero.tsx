@@ -1,4 +1,4 @@
-import { ArrowDown, Github, Mail } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import avatarImage from '../../assests/images/avatar_alex.jpeg';
 
 export function Hero() {
@@ -30,6 +30,14 @@ export function Hero() {
             className="p-3 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"
           >
             <Github size={24} className="text-gray-700" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/chongzhi-wei-2b8a783bb/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"
+          >
+            <Linkedin size={24} className="text-gray-700" />
           </a>
           <a
             href="mailto:alexchong@outlook.com"
