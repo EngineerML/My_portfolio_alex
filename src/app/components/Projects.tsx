@@ -1,88 +1,192 @@
-import { ExternalLink } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
-import photoroomImage from '../../assests/images/photoroom.png';
+import { ArrowUpRight, Gamepad2, PenTool, Sparkles, Wand2 } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
+import { Reveal } from './Reveal';
+
+type Project = {
+  title: string;
+  domain: string;
+  category: string;
+  year: string;
+  role: string;
+  description: string;
+  outcome: string;
+  tags: string[];
+  link: string;
+  Icon: LucideIcon;
+  glyph: string;
+  gradient: string;
+};
+
+const projects: Project[] = [
+  {
+    title: 'AI Photo Platform',
+    domain: 'photoroom.com',
+    category: 'Computer Vision',
+    year: '2024',
+    role: 'Full-Stack + ML',
+    description:
+      'Instant background removal and AI photo editing that turns raw product shots into studio-quality visuals.',
+    outcome: 'Segmentation pipeline serving millions of edits a month.',
+    tags: ['Python', 'PyTorch', 'React', 'AWS'],
+    link: 'https://www.photoroom.com',
+    Icon: Wand2,
+    glyph: 'PR',
+    gradient: 'from-indigo-500 via-blue-500 to-cyan-500',
+  },
+  {
+    title: 'AI Asset Studio',
+    domain: 'scenario.com',
+    category: 'Generative AI',
+    year: '2024',
+    role: 'Backend + Infra',
+    description:
+      'A platform for generating style-consistent game assets from custom-trained diffusion models.',
+    outcome: 'Fine-tuning workflow with sub-second inference at scale.',
+    tags: ['Next.js', 'FastAPI', 'Stable Diffusion', 'AWS'],
+    link: 'https://scenario.com',
+    Icon: Gamepad2,
+    glyph: 'SC',
+    gradient: 'from-violet-500 via-purple-500 to-fuchsia-500',
+  },
+  {
+    title: 'Vector AI Studio',
+    domain: 'recraft.ai',
+    category: 'Design Tooling',
+    year: '2023',
+    role: 'Frontend + ML',
+    description:
+      'Generate and edit crisp, infinitely scalable vector art, icons, and illustrations from text.',
+    outcome: 'Real-time SVG canvas backed by a diffusion + vectorization model.',
+    tags: ['React', 'TypeScript', 'WebGL', 'Redis'],
+    link: 'https://recraft.ai',
+    Icon: PenTool,
+    glyph: 'RC',
+    gradient: 'from-emerald-500 via-teal-500 to-cyan-500',
+  },
+  {
+    title: 'Creative AI Engine',
+    domain: 'leonardo.ai',
+    category: 'Generative AI',
+    year: '2023',
+    role: 'Full-Stack + CUDA',
+    description:
+      'High-fidelity image and game-asset generation with fine-grained creative control.',
+    outcome: 'GPU-optimized inference cluster with elastic autoscaling.',
+    tags: ['Next.js', 'FastAPI', 'PyTorch / CUDA', 'MongoDB'],
+    link: 'https://leonardo.ai',
+    Icon: Sparkles,
+    glyph: 'LD',
+    gradient: 'from-amber-500 via-orange-500 to-rose-500',
+  },
+];
+
+/** Branded, code-drawn product preview — no external imagery. */
+function ProjectCover({ project }: { project: Project }) {
+  const { Icon, gradient, domain, glyph } = project;
+  return (
+    <div className={`relative h-full w-full bg-gradient-to-br ${gradient}`}>
+      {/* dotted grid */}
+      <div
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage: 'radial-gradient(rgba(255,255,255,0.7) 1px, transparent 1px)',
+          backgroundSize: '18px 18px',
+        }}
+      />
+      {/* soft light blooms */}
+      <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-white/25 blur-3xl" />
+      <div className="absolute -right-6 -top-8 h-32 w-32 rounded-full bg-black/10 blur-2xl" />
+
+      {/* faux app window */}
+      <div className="absolute inset-4 flex flex-col overflow-hidden rounded-xl border border-white/20 bg-white/10 shadow-2xl backdrop-blur-md transition-transform duration-500 group-hover:-translate-y-1">
+        <div className="flex items-center gap-1.5 border-b border-white/15 px-3 py-2.5">
+          <span className="h-2.5 w-2.5 rounded-full bg-white/40" />
+          <span className="h-2.5 w-2.5 rounded-full bg-white/30" />
+          <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
+          <span className="ml-2 flex-1 truncate rounded-md bg-white/15 px-2.5 py-1 font-mono text-[10px] text-white/80">
+            {domain}
+          </span>
+        </div>
+        <div className="relative flex flex-1 items-center justify-center">
+          <div className="grid h-16 w-16 place-items-center rounded-2xl bg-white/15 ring-1 ring-white/25 backdrop-blur-sm transition-transform duration-500 group-hover:scale-110">
+            <Icon size={30} className="text-white" strokeWidth={1.75} />
+          </div>
+          <span className="pointer-events-none absolute bottom-1 right-3 font-mono text-5xl font-black tracking-tighter text-white/10">
+            {glyph}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export function Projects() {
-  const projects = [
-    {
-      title: 'AI Photo Platform',
-      description: 'Photoroom — AI photo editing tool for quick, professional images.',
-      image: photoroomImage,
-      tags: ['Python', 'DeepLearning', 'React', 'AWS', 'Docker'],
-      link: 'https://www.photoroom.com',
-    },
-    {
-      title: 'AI Asset Studio',
-      description: 'Scenario — AI platform for generating custom game assets and visuals.',
-      image: 'https://images.unsplash.com/photo-1661246627162-feb0269e0c07?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBkZXNpZ24lMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzczMjUyNjc5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      tags: ['Next.js', 'FastAPI', 'Stable Diffusion', 'PyTorch', 'AWS', 'PostgreSQL', 'Docker'],
-      link: 'https://scenario.com',
-    },
-    {
-      title: 'Vector AI Studio',
-      description: 'Recraft — AI tool for generating and editing vector art, icons, and illustrations.',
-      image: 'https://images.unsplash.com/photo-1764588037085-a78240016f8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwZGVzaWduJTIwd29ya3NwYWNlfGVufDF8fHx8MTc3MzIwNjM0Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      tags: ['React/TypeScript', 'Diffusion + SVG models', 'WebGL/Canvas', 'Redis'],
-      link: 'https://recraft.ai',
-    },
-    {
-      title: 'Creative AI Engine',
-      description: 'Leonardo AI — AI platform for creating high-quality images and game assets.',
-      image: 'https://images.unsplash.com/photo-1754548930515-ac7eb978280d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMHRlY2hub2xvZ3klMjBwcm9qZWN0fGVufDF8fHx8MTc3MzE5MzQ2NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      tags: ['Next.js', 'FastAPI', 'PyTorch/CUDA', 'AWS', 'MongoDB'],
-      link: 'https://leonardo.ai',
-    },
-  ];
-
   return (
-    <section id="projects" className="py-20 px-6 bg-gray-50">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl mb-12 text-center text-gray-900">
-          Featured Projects
-        </h2>
-        
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project) => (
-            <div
-              key={project.title}
-              className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-            >
-              <div className="aspect-video overflow-hidden bg-gray-100">
-                <ImageWithFallback
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              
-              <div className="p-6">
-                <h3 className="text-2xl mb-2 text-gray-900">{project.title}</h3>
-                <p className="text-gray-600 mb-4">{project.description}</p>
-                
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-sm"
-                    >
-                      {tag}
+    <section id="projects" className="border-t border-black/5 px-6 py-24 dark:border-white/5">
+      <div className="mx-auto max-w-6xl">
+        <Reveal className="mb-14 text-center">
+          <p className="mb-3 font-mono text-sm text-indigo-500 dark:text-indigo-400">
+            03 — Projects
+          </p>
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
+            Selected work
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-slate-600 dark:text-slate-400">
+            A few products I've helped design, build, and scale — where AI meets production
+            engineering.
+          </p>
+        </Reveal>
+
+        <div className="grid gap-8 md:grid-cols-2">
+          {projects.map((project, i) => (
+            <Reveal key={project.title} delay={(i % 2) * 0.1}>
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-black/5 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl dark:border-white/5 dark:bg-white/[0.03] dark:shadow-none dark:hover:bg-white/[0.06]"
+              >
+                <div className="aspect-video overflow-hidden">
+                  <ProjectCover project={project} />
+                </div>
+
+                <div className="flex flex-1 flex-col p-6">
+                  <div className="mb-3 flex items-center gap-2 font-mono text-xs text-slate-500 dark:text-slate-400">
+                    <span className="text-indigo-500 dark:text-indigo-400">{project.category}</span>
+                    <span className="opacity-40">/</span>
+                    <span>{project.role}</span>
+                    <span className="ml-auto">{project.year}</span>
+                  </div>
+
+                  <div className="flex items-start justify-between gap-3">
+                    <h3 className="text-xl font-semibold text-slate-900 dark:text-white">
+                      {project.title}
+                    </h3>
+                    <span className="mt-1 grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-black/5 bg-black/[0.03] text-slate-500 transition-all group-hover:border-indigo-500/30 group-hover:bg-indigo-500/10 group-hover:text-indigo-500 dark:border-white/5 dark:bg-white/5 dark:text-slate-400 dark:group-hover:text-indigo-400">
+                      <ArrowUpRight size={16} className="transition-transform group-hover:rotate-45" />
                     </span>
-                  ))}
+                  </div>
+
+                  <p className="mt-2 text-slate-600 dark:text-slate-400">{project.description}</p>
+
+                  <p className="mt-3 flex items-start gap-2 text-sm text-slate-500 dark:text-slate-500">
+                    <Sparkles size={15} className="mt-0.5 shrink-0 text-indigo-500/70" />
+                    {project.outcome}
+                  </p>
+
+                  <div className="mt-auto flex flex-wrap gap-2 pt-5">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full border border-black/5 bg-black/[0.03] px-3 py-1 text-xs font-medium text-slate-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-300"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                
-                <div className="flex gap-4">
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-blue-600 hover:text-blue-700 transition-colors"
-                  >
-                    <ExternalLink size={20} />
-                    <span>Live Demo</span>
-                  </a>
-                </div>
-              </div>
-            </div>
+              </a>
+            </Reveal>
           ))}
         </div>
       </div>
